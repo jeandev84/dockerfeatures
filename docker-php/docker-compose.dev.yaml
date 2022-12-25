@@ -15,6 +15,12 @@ services:
         dockerfile: ./php/Dockerfile
       volumes:
         - ./app:/var/www/html
+      environment:
+        MYSQL_HOST: db
+        MYSQL_PORT: ${MYSQL_PORT}
+        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE: ${MYSQL_DATABASE}
+        MYSQL_USER: ${MYSQL_USER}
 
    # mysql (https://hub.docker.com/_/mysql/tags)
    # If has not mysql 8.0 use different port e.g: "4306:3306", or by default "3306:3306"
