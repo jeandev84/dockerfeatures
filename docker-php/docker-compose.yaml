@@ -14,6 +14,7 @@ services:
    app:
       build:
         dockerfile: ./php/Dockerfile
+        target: app
    # mysql (https://hub.docker.com/_/mysql/tags)
    # If has not mysql 8.0 use different port e.g: "4306:3306", or by default "3306:3306"
    db:
