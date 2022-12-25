@@ -1,9 +1,8 @@
-# Production
+# Development
 services:
    # nginx
    web:
-      build:
-        dockerfile: ./nginx/Dockerfile
+      image: nginx:latest
       ports:
         - "80:80"
       volumes:
@@ -14,12 +13,17 @@ services:
    app:
       build:
         dockerfile: ./php/Dockerfile
+      volumes:
+        - ./app:/var/www/html
+
    # mysql (https://hub.docker.com/_/mysql/tags)
    # If has not mysql 8.0 use different port e.g: "4306:3306", or by default "3306:3306"
    db:
      image: mysql:8.0
      volumes:
        - mysqldata:/var/lib/mysql
+     ports:
+       - "4306:3306"
      restart: unless-stopped
      environment:
        MYSQL_ROOT_PASSWORD: secret
